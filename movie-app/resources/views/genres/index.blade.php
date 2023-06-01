@@ -7,7 +7,7 @@
             <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
             <li class="breadcrumb-item active">Genres</li>
         </ol>
-        <a href="#">
+        <a href="/genres/create">
             <button class="btn btn-success" type="submit">Create Data</button>
         </a>
     </div>
