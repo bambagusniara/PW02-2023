@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GenreController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
@@ -17,18 +18,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/index', function () {
-    return view('index');
-});
-
-Route::get('/movies', [MovieController::class,'index'] );
-Route::get('/movies/create',[MovieController::class, 'create']);
-Route::post('/movies', [MovieController::class, 'store']);
-Route::delete('/movies/{movie}', [MovieController::class, 'destroy']);
 
 Route::get('/genres', [GenreController::class,'index'] );
 Route::get('/genres/create',[GenreController::class,'create']);
@@ -41,3 +30,11 @@ Route::post('/reviews', [ReviewController::class, 'store']);
 Route::delete('/reviews/{review}', [ReviewController::class, 'destroy']);
 
 Route::get('/users', [UserController::class,'index']);
+
+Route::resource('/movies', MovieController::class);
+
+Route::get('/', [HomeController::class, 'index']);
+
+Route::resource('/genres', GenreController::class);
+
+Route::resource('/reviews', ReviewController::class);

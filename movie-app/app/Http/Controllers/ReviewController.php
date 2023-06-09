@@ -59,7 +59,7 @@ class ReviewController extends Controller
      */
     public function edit(Review $review)
     {
-        //
+        return view('reviews.edit', compact('review'));
     }
 
     /**
@@ -67,7 +67,18 @@ class ReviewController extends Controller
      */
     public function update(Request $request, Review $review)
     {
-        //
+        $validatedData = $request->validate([
+            'film' => 'required',
+            'user' => 'required',
+            'rating' => 'required|numeric',
+            'review' => 'required',
+            'tanggal' => 'required|integer',
+
+        ]);
+
+        Review::update($validatedData);
+
+        return redirect('/reviews')->with('success', 'Review added successfully!');
     }
 
     /**
